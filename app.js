@@ -1,13 +1,12 @@
 mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
    
-    const map = new mapboxgl.Map({
+     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
         center: [-98.5795, 39.8283], // USA center
-        zoom: 4,
+        zoom: 10,
     });
      
-
     // Load locations from JSON
     fetch('cities.json')
         .then(response => response.json())
@@ -31,5 +30,30 @@ mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
             });
         })
         .catch(err => console.error('Error loading JSON:', err));
+
+
+        
+       fetch('cities.json')
+        .then(response => response.json())
+        .then(locations => {
+        const container = document.getElementById('city-buttons');
+
+    locations.forEach(location => {
+      // Create button element
+      const button = document.createElement('button');
+      button.className = 'btn btn-primary'; // Bootstrap button class
+      button.textContent = location.name;
+
+      // Optional: Add click event
+      button.addEventListener('click', () => {
+        alert(`You clicked on ${location.name}`);
+        // Or any other action, e.g., zoom map to city
+      });
+
+      // Append button to container
+      container.appendChild(button);
+    });
+  })
+  .catch(err => console.error('Error loading cities:', err));
 
        
