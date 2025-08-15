@@ -46,7 +46,6 @@ mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
 
       // Optional: Add click event
       button.addEventListener('click', () => {
-        alert(`You clicked on ${location.name}`);
         // Or any other action, e.g., zoom map to city
       });
 

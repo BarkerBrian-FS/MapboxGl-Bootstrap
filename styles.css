@@ -2,10 +2,23 @@
 
 
 }
+.map-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to top, white, transparent);
+      pointer-events: none; /* So map is still clickable */
+      z-index: 999; /* Make sure it’s above the map */
+    }
 .hills-bg {
   height: 100vh;
   background-image: url('Images/hills.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+.city-buttons{
+  
 }
