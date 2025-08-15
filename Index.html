@@ -12,17 +12,14 @@
     
 </head>
 <body>
-        <section class="container-lg" style="position: relative; width: 100%; height: 500px;">
-            <div id="map" style="width: 100%; height: 100%; ";>
-                
-            </div>
-            <div style="position: absolute; top: 20px; left: 20px; background-color: rgba(132, 180, 232, 0.9); padding: 15px 20px; border-radius: 12px; color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        <section class="container-fluid" style="position: relative; width: 100%; height: 500px;">
+            <div id="map" style="width: 100%; height: 100%; ";></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(to top, white, transparent); pointer-events: none;"></div>
+            <div style=" width: 90%; position: absolute; top: 50%; left: 20px; background-color: rgba(132, 180, 232, 0.9); padding: 15px 20px; border-radius: 12px; color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                 <h4 style="margin: 0;">Local experts, expansive service area</h4>
-                <div id="city-buttons" class="d-flex flex-wrap gap-2">
+                <div id="city-buttons" class="d-flex flex-wrap gap-1" style:"">
                         <!-- Buttons will be inserted here -->
                 </div>
-            </div>
-            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, white, transparent); pointer-events: none;"></div>
         </section>
         <section>
             <div style="height: 40vh; background-image: url('Images/hills.png'); ">
@@ -30,7 +27,78 @@
             </div>
         </section>
         <section >
-            <footer >
+            <footer class="bg-dark text-white py-5">
+            <div class="container">
+                <div class="row">
+                <!-- Social & Contact -->
+                <div class="col-md-3 mb-4">
+                    <h6>Contact</h6>
+                    <p class="mb-1">(123) 456-7890</p>
+                    <p class="mb-3">testing@pmw.com</p>
+                    <p class="mb-1">123 Main St</p>
+                    <p>Anywhere, FL 12345</p>
+                    <div class="d-flex gap-2 mt-2">
+                    <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Owners -->
+                <div class="col-md-2 mb-4">
+                    <h6>Owners</h6>
+                    <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Owner Login</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Owner Resources</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Owner FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Residents -->
+                <div class="col-md-2 mb-4">
+                    <h6>Residents</h6>
+                    <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Resident Login</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Resident Resources</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Resident FAQs</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Resident Benefits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Property Management -->
+                <div class="col-md-2 mb-4">
+                    <h6>Property Management</h6>
+                    <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Residential</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Multi-Family</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Landlord Protection</a></li>
+                    </ul>
+                </div>
+
+                <!-- Real Estate -->
+                <div class="col-md-1 mb-4">
+                    <h6>Real Estate</h6>
+                    <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Buyers</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Sellers</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Education</a></li>
+                    </ul>
+                </div>
+
+                <!-- Calculators -->
+                <div class="col-md-2 mb-4">
+                    <h6>Calculators</h6>
+                    <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">What’s My Home Worth?</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">ROI Calculator</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Rent vs Sell Calculator</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Vacancy Loss Calculator</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
             </footer>
         </section>
         <script src="app.js"></script>

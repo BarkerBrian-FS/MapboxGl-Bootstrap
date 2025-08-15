@@ -7,52 +7,89 @@ mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
         zoom: 10,
     });
      
-    // Load locations from JSON
-    fetch('cities.json')
-        .then(response => response.json())
-        .then(locations => {
-            locations.forEach(location => {
-                fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location.name)}.json?access_token=${mapboxgl.accessToken}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.features.length > 0) {
-                            const coords = data.features[0].geometry.coordinates;
-                            // Add marker
-                        map.on('load', () => {
-                            new mapboxgl.Marker()
-                                .setLngLat(coords)
-                                .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3>`))
-                                .addTo(map)
-                        })        
-                        }
-                    })
-                    .catch(err => console.error('Geocoding error:', err));
-            });
-        })
-        .catch(err => console.error('Error loading JSON:', err));
+// fetch('cities.json')
+//     .then(response => response.json())
+//     .then(locations => {
+//         const container = document.getElementById('city-buttons');
 
+//         locations.forEach(location => {
+//             // Fetch coordinates for each location
+//             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location.name)}.json?access_token=${mapboxgl.accessToken}`)
+//                 .then(res => res.json())
+//                 .then(data => {
+//                     if (data.features.length > 0) {
+//                         const coords = data.features[0].geometry.coordinates;
 
-        
-       fetch('cities.json')
-        .then(response => response.json())
-        .then(locations => {
-        const container = document.getElementById('city-buttons');
+//                         // Add marker (only once map is loaded)
+//                         new mapboxgl.Marker()
+//                             .setLngLat(coords)
+//                             .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3>`))
+//                             .addTo(map);
 
-    locations.forEach(location => {
-      // Create button element
-      const button = document.createElement('button');
-      button.className = 'btn btn-primary'; // Bootstrap button class
-      button.textContent = location.name;
+//                         // Create Bootstrap button
+//                         const button = document.createElement('button');
+//                         button.className = 'btn btn-light m-1';
+//                         button.textContent = location.name;
 
-      // Optional: Add click event
-      button.addEventListener('click', () => {
-        // Or any other action, e.g., zoom map to city
-      });
+//                         // On click, zoom to city
+//                         button.addEventListener('click', () => {
+//                             map.flyTo({
+//                                 center: coords,
+//                                 zoom: 10,
+//                                 essential: true
+//                             });
+//                         });
 
-      // Append button to container
-      container.appendChild(button);
-    });
-  })
-  .catch(err => console.error('Error loading cities:', err));
+//                         // Append button to container
+//                         container.appendChild(button);
+//                     }
+//                 })
+//                 .catch(err => console.error('Geocoding error:', err));
+//         });
+//     })
+//     .catch(err => console.error('Error loading JSON:', err));
 
-       
+async function loadCities() {
+  try {
+    const response = await fetch('cities.json');
+    const cities = await response.json();
+    const container = document.getElementById('city-buttons');
+
+    for (const city of cities) {
+      // Get coordinates from Mapbox Geocoding
+      const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(city.name)}.json?access_token=${mapboxgl.accessToken}`);
+      const geoData = await geoRes.json();
+
+      if (geoData.features && geoData.features.length > 0) {
+        const coords = geoData.features[0].geometry.coordinates; // [lng, lat]
+
+        // Add marker
+        new mapboxgl.Marker()
+          .setLngLat(coords)
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${city.name}</h3>`))
+          .addTo(map);
+
+        // Create button
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-light m-1';
+        btn.textContent = city.name;
+
+        // Zoom on click
+        btn.addEventListener('click', () => {
+          map.flyTo({
+            center: coords, // correct [lng, lat]
+            zoom: 10,
+            essential: true
+          });
+        });
+
+        container.appendChild(btn);
+      }
+    }
+  } catch (err) {
+    console.error('Error loading cities:', err);
+  }
+}
+
+// Make sure map is loaded first
+map.on('load', loadCities);
