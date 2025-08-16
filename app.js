@@ -7,48 +7,6 @@ mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
         zoom: 10,
     });
      
-// fetch('cities.json')
-//     .then(response => response.json())
-//     .then(locations => {
-//         const container = document.getElementById('city-buttons');
-
-//         locations.forEach(location => {
-//             // Fetch coordinates for each location
-//             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location.name)}.json?access_token=${mapboxgl.accessToken}`)
-//                 .then(res => res.json())
-//                 .then(data => {
-//                     if (data.features.length > 0) {
-//                         const coords = data.features[0].geometry.coordinates;
-
-//                         // Add marker (only once map is loaded)
-//                         new mapboxgl.Marker()
-//                             .setLngLat(coords)
-//                             .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3>`))
-//                             .addTo(map);
-
-//                         // Create Bootstrap button
-//                         const button = document.createElement('button');
-//                         button.className = 'btn btn-light m-1';
-//                         button.textContent = location.name;
-
-//                         // On click, zoom to city
-//                         button.addEventListener('click', () => {
-//                             map.flyTo({
-//                                 center: coords,
-//                                 zoom: 10,
-//                                 essential: true
-//                             });
-//                         });
-
-//                         // Append button to container
-//                         container.appendChild(button);
-//                     }
-//                 })
-//                 .catch(err => console.error('Geocoding error:', err));
-//         });
-//     })
-//     .catch(err => console.error('Error loading JSON:', err));
-
 async function loadCities() {
   try {
     const response = await fetch('cities.json');
