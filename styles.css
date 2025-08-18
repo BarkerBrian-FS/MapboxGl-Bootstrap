@@ -1,25 +1,34 @@
-#map {
-
-
-}
-.map-gradient {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(to top, white, transparent);
-      pointer-events: none; /* So map is still clickable */
-      z-index: 999; /* Make sure it’s above the map */
-    }
-.hills-bg {
-  height: 100vh;
-  background-image: url('Images/hills.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.city-buttons{
-  
+li{
+  font-size: x-small
 }
 
+#city-buttons .btn {
+    border-radius: 20px;
+    background-color: white;
+    transition: background-color 0.3s;
+    font-size: smaller;
+}
+
+#city-buttons .btn:hover {
+    background-color: orangered;
+    color: white;
+}
+
+.col-md-4 .btn {
+    border-radius: 50px;           
+    background-color: #BDD5EA;    
+    color: rgb(97, 78, 78);                 
+    border: none;                   
+    padding: 0.5rem 1.2rem;       
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    font-size: smaller;
+}
+
+footer{
+  background-color: #515252;
+}
+
+footer .row{
+  margin: 3%;
+}

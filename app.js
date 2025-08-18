@@ -29,7 +29,7 @@ async function loadCities() {
 
         // Create button
         const btn = document.createElement('button');
-        btn.className = 'btn btn-light m-1';
+        btn.className = 'btn';
         btn.textContent = city.name;
 
         // Zoom on click
