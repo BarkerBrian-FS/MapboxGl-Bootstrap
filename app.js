@@ -40,7 +40,6 @@ async function loadCities() {
             essential: true
           });
         });
-
         container.appendChild(btn);
       }
     }
@@ -48,6 +47,5 @@ async function loadCities() {
     console.error('Error loading cities:', err);
   }
 }
-
 // Make sure map is loaded first
 map.on('load', loadCities);
