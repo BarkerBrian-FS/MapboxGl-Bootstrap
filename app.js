@@ -17,6 +17,7 @@ async function loadCities() {
       // Get coordinates from Mapbox Geocoding
       const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(city.name)}.json?access_token=${mapboxgl.accessToken}`);
       const geoData = await geoRes.json();
+     
 
       if (geoData.features && geoData.features.length > 0) {
         const coords = geoData.features[0].geometry.coordinates; // [lng, lat]
@@ -39,10 +40,13 @@ async function loadCities() {
             zoom: 10,
             essential: true
           });
+          const path = '/' + city.name.toLowerCase().replace(/\s+/g, '-');
+                    history.pushState(null, '', path);
         });
         container.appendChild(btn);
       }
     }
+  
   } catch (err) {
     console.error('Error loading cities:', err);
   }
